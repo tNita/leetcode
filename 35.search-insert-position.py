@@ -10,7 +10,7 @@ class Solution:
     def searchInsert(self, nums: List[int], target: int) -> int:
         left = 0
         right = len(nums) - 1
-        while right > left:
+        while left <= right:
             middle = (left + right) // 2
             if nums[middle] == target:
                 return middle
@@ -18,8 +18,8 @@ class Solution:
                 left = middle + 1
             else:
                 right = middle - 1
-        ## 見つからなかった場合 or 要素が一つの時
-        return left if nums[left] >= target else left + 1
+        ## 見つからなかった場合
+        return left
 
 
 # @lc code=end
