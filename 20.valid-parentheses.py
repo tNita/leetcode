@@ -9,12 +9,9 @@
 from collections import deque
 
 BRANCKET_MAP = {
-    "{": -1,
-    "[": -2,
-    "(": -3,
-    ")": 3,
-    "]": 2,
-    "}": 1,
+    ")": "(",
+    "}": "{",
+    "]": "[",
 }
 
 
@@ -22,13 +19,13 @@ class Solution:
     def isValid(self, s: str) -> bool:
         bStack = deque()
         for ch in s:
-            if BRANCKET_MAP[ch] > 0:
+            if ch in BRANCKET_MAP:
                 if not bStack:
                     return False
-                if BRANCKET_MAP[ch] != -1 * bStack.pop():
+                if BRANCKET_MAP[ch] != bStack.pop():
                     return False
             else:
-                bStack.append(BRANCKET_MAP[ch])
+                bStack.append(ch)
 
         ## 残っていたらfalse
         return False if bStack else True
