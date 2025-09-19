@@ -13,7 +13,7 @@ class Solution:
         # for n in nums:
         #     i = bisect_left(tails, n)  # x を置ける最左位置
         #     if i == len(tails):
-        #         tails.append(x)
+        #         tails.append(n)
         #     else:
-        #         tails[i] = x
+        #         tails[i] = n
         # return len(tails)
