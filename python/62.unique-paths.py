@@ -7,6 +7,7 @@ class Solution:
         #     return x * factorial(x-1)
         # return factorial(m+n-2) // (factorial(m-1) * factorial(n-1))
 
+        # DP
         dp = [[0 for _ in range(n)] for _ in range(m)]
 
         for i in range(m):
@@ -28,3 +29,20 @@ class Solution:
 
             dp[d][r] = dp[d][r + 1] + dp[d + 1][r]
         return dp[0][0]
+
+        # DP（右下から）
+        # dp = [[1] * n for _ in range(m)]
+
+        # # 右下から左上に向かって計算
+        # for i in range(m - 2, -1, -1):
+        #     for j in range(n - 2, -1, -1):
+        #         dp[i][j] = dp[i + 1][j] + dp[i][j + 1]
+
+        # return dp[0][0]
+
+        # DP（右下から、1次元）
+        # dp = [1] * n
+        # for _ in range(m - 1):
+        #     for j in range(n - 2, -1, -1):
+        #         dp[j] += dp[j + 1]
+        # return dp[0]
